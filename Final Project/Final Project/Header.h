@@ -12,4 +12,12 @@
 #include <stdio.h>
 #include <iostream>
 
+using namespace std;
+
+
+string userInput(); //to accept user input
+void loadCalendar(string path); //load an old calendar
+
+
+
 #endif
