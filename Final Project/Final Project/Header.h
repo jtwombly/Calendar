@@ -15,8 +15,9 @@
 using namespace std;
 
 
-string userInput(); //to accept user input
+string userInput(string question); //to accept user input
 void loadCalendar(string path); //load an old calendar
+void beginProgram(); //Begin Program
 
 
 
