@@ -21,7 +21,7 @@ void beginProgram() {
     else cout << "Error";
 
     if(firstTime) {
-        
+        cout << "Please enter the path that you would like to save your calendar";
     }
     
     else if (!firstTime) {
