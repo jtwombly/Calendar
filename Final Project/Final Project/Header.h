@@ -9,8 +9,13 @@
 #ifndef Final_Project_Header_h
 #define Final_Project_Header_h
 
-#include <stdio.h>
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+#include <cmath>
+#include <vector>
+#include <sstream>
 
 using namespace std;
 
@@ -18,6 +23,8 @@ using namespace std;
 string userInput(string question); //to accept user input
 void loadCalendar(string path); //load an old calendar
 void beginProgram(); //Begin Program
+void pathSetup(); //Setup path for the first time
+void openCalendar(); //Open already made calendar
 
 
 
