@@ -24,7 +24,7 @@ string userInput(string question); //to accept user input
 void loadCalendar(string path); //load an old calendar
 void beginProgram(); //Begin Program
 void pathSetup(); //Setup path for the first time
-void openCalendar(); //Open already made calendar
+string openCalendar(bool firstTime); //Open already made calendar
 
 
 

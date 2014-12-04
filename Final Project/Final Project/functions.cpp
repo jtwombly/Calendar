@@ -10,6 +10,7 @@ string userInput() {
 void beginProgram() {
     bool firstTime;
     string option;
+    string calendarOutPut;
     
     cout << "Welcome to MyCalendar! If this is is your first time using this program, please enter 'Y' below, otherwise, enter 'N'." << endl << endl << "Is this your first Time? (Y or N): ";
     
@@ -32,29 +33,47 @@ void beginProgram() {
         cout  << "Enter location where are already have a saved file: ";
     }
     
-    openCalendar();
+    calendarOutPut = openCalendar(firstTime);
+    cout << calendarOutPut;
+    
 
 }
 
-void openCalendar() {
-    string path;
-    string _fileInput;
-    string outFile;
+string openCalendar(bool firstTime) {
 
-    path  = userInput() + "/calendar.txt";
+    const string path  = userInput() + "/calendar.txt";
+    string line;
+    string contents;
     
-    ifstream fileRead(path);
+    ifstream fileRead;
+    fileRead.open(path.c_str());
     
     if ( !fileRead.is_open() ) {
-        cout << "No calendar file, creating file...";
-        _fileInput = "calendar.txt";
-        fileRead.open(_fileInput.c_str());
+        if(firstTime) {
+            fileRead.close();
+            cout << "No calendar file, creating file...";
+            ofstream outFile;
+            outFile.open(path.c_str());
+            outFile << "Created" << "\n";
+            outFile.close();
+            fileRead.open(path.c_str());
+        }
+        else if(!firstTime) {
+            cout << "No file found at this location";
+        }
     }
     
     else {
         cout << "Opening existing calendar file" << endl;
-        fileRead.open(_fileInput.c_str());
     }
     
     
+    while (getline(fileRead,line))
+    {
+        istringstream ss(line);
+        ss >> contents;
+    }
+    
+    fileRead.close();
+    return contents;
 }
