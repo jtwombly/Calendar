@@ -1,6 +1,7 @@
 #include "Header.h"
 
 int main() {
-    beginProgram();
+    const string path = beginProgram();
+    displayMenu(path);
     return 0;
 }
