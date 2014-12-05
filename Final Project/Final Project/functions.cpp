@@ -7,6 +7,15 @@ string userInput() {
     return input;
 }
 
+string getNotes() {
+    string fullNote = "";
+    char input[100];
+    cin.ignore(256, '\n');
+    cin.getline(input,100);
+    fullNote = input;
+    return fullNote;
+}
+
 int getNum() {
     int input = 0;
     cin >> input;
@@ -41,7 +50,6 @@ string beginProgram() {
     
     calendarOutPut = openCalendar(firstTime);
     return calendarOutPut;
-    
 }
 
 string openCalendar(bool firstTime) {
@@ -113,13 +121,12 @@ void createNewEvent(string path) {
     }
     
     cout << "Please enter any notes for your new event: ";
-    notes = userInput();
-    cout << notes;
+    notes = getNotes();
     replace(notes.begin(), notes.end(),' ', '^');
     
-    cout << notes;
-    
     addEventToFile(path,month,monthIndex,day,year,notes);
+    
+    displayMenu(path);
 }
 
 
@@ -206,6 +213,7 @@ void displayMenu(string path) {
     cout << "2. View Events for a given day" << endl;
     cout << "3. Export day schedule to a file" << endl;
     cout << "4. View all events" << endl;
+    cout << "5. Exit" << endl;
     
     doChoice(getNum(),path);
     
@@ -251,8 +259,6 @@ void parseDay(string path) {
     conv << monthReq << dayReq << yrReq;
     dayKey = conv.str();
     
-    cout << dayKey;
-    
     ifstream fileRead;
     fileRead.open(path.c_str());
     
@@ -283,8 +289,10 @@ void parseDay(string path) {
                 reconv << monthIndex << day << year;
                 key = reconv.str();
                 
+                replace(notes.begin(), notes.end(),'^', ' ');
+                
                 if(key == dayKey) {
-                    cout << "MONTH: " << month + "DAY: " << day << "YEAR: " << year << "NOTES: " << notes << "\n";
+                    cout << "MONTH: " << month + " DAY: " << day << " YEAR: " << year << " NOTES: " << notes << "\n";
                     eCounter++;
                 }
                 
@@ -297,7 +305,8 @@ void parseDay(string path) {
         }
     }
     
-        fileRead.close();
-     
+    fileRead.close();
+    displayMenu(path);
+
     
 }

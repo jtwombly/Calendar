@@ -17,6 +17,7 @@
 #include <vector>
 #include <sstream>
 #include <ctime>
+#include <algorithm>
 
 
 using namespace std;
@@ -43,5 +44,6 @@ void displayMenu(string path); //Display options for the program after starting 
 void doChoice(int choice, string path); //Do what it asks to do. Possibly not necessary.
 void parseDay(string path);
 void addEventToFile(string path,string month, int monthIndex, int day,int year,string notes);
+string getNotes();
 
 #endif
